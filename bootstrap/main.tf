@@ -1,6 +1,6 @@
 
 resource "aws_s3_bucket" "state_bucket" {
-  bucket = "${var.state_bucket_name}"
+  bucket = var.state_bucket_name
 
   server_side_encryption_configuration {
     rule {
@@ -20,7 +20,7 @@ resource "aws_s3_bucket" "state_bucket" {
 }
 
 resource "aws_dynamodb_table" "state_lock_table" {
-  name = "${var.lock_table_name}"
+  name = var.lock_table_name
 
   billing_mode = "PAY_PER_REQUEST"
 
