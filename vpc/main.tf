@@ -27,7 +27,7 @@ resource "aws_route" "public_route" {
 }
 
 resource "aws_internet_gateway" "internet_access" {
-  vpc_id = aws_vpc.vpc
+  vpc_id = aws_vpc.vpc.id
 
 }
 
