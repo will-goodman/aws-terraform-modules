@@ -1,4 +1,8 @@
 
+variable "vpc_name" {
+  description = "Name to assign to the VPC."
+}
+
 variable "vpc_cidr" {
   description = "CIDR range of the VPC."
 }
