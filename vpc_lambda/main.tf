@@ -42,29 +42,37 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
   retention_in_days = var.logs_retention_period
 }
 
-resource "aws_iam_policy" "lambda_logging" {
-  name = "${var.function_name}_lambda_logging"
+data "aws_iam_policy_document" "lambda_policy" {
+  statement {
+    actions = [
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
+    ]
+    resources = [
+      "arn:aws:logs:*:*:*"
+    ]
+    effect = "Allow"
+  }
+  statement {
+    actions = [
+      "ec2:CreateNetworkInterface",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DeleteNetworkInterface"
+    ]
+    resources = ["*"]
+    effect = "Allow"
+  }
+}
+
+resource "aws_iam_policy" "lambda_policy" {
+  name = "${var.function_name}_lambda_policy"
   path = "/"
-  description = "IAM policy for logging lambda ${var.function_name}"
+  description = "IAM policy for lambda ${var.function_name}"
 
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ],
-      "Resource": "arn:aws:logs:*:*:*",
-      "Effect": "Allow"
-    }
-  ]
-}
-EOF
+  policy = data.aws_iam_policy_document.lambda_policy.json
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_logs" {
+resource "aws_iam_role_policy_attachment" "lambda_policy" {
   role = aws_iam_role.iam_for_lambda.name
-  policy_arn = aws_iam_policy.lambda_logging.arn
+  policy_arn = aws_iam_policy.lambda_policy.arn
 }
