@@ -34,9 +34,5 @@ data "aws_iam_policy_document" "alb_logging" {
     ]
     effect = "Allow"
     resources = [aws_s3_bucket.alb_access_logs.arn]
-    principals {
-      identifiers = [aws_lb.alb.arn]
-      type = "AWS"
-    }
   }
 }
