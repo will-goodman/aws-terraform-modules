@@ -16,7 +16,7 @@ resource "aws_lb" "alb" {
 resource "aws_s3_bucket" "alb_access_logs" {
   bucket_prefix = "${var.alb_name}-access-logs"
 
-  policy = data.aws_iam_policy_document.alb_logging.json
+  //policy = data.aws_iam_policy_document.alb_logging.json
 
   force_destroy = true
   lifecycle_rule {
@@ -27,12 +27,12 @@ resource "aws_s3_bucket" "alb_access_logs" {
   }
 }
 
-data "aws_iam_policy_document" "alb_logging" {
-  statement {
-    actions = [
-      "s3:PutObject"
-    ]
-    effect = "Allow"
-    resources = [aws_s3_bucket.alb_access_logs.arn]
-  }
-}
+//data "aws_iam_policy_document" "alb_logging" {
+//  statement {
+//    actions = [
+//      "s3:PutObject"
+//    ]
+//    effect = "Allow"
+//    resources = [aws_s3_bucket.alb_access_logs.arn]
+//  }
+//}
