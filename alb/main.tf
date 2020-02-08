@@ -8,7 +8,7 @@ resource "aws_lb" "alb" {
   subnets = var.subnets
 
   access_logs {
-    bucket = aws_s3_bucket.alb_access_logs
+    bucket = aws_s3_bucket.alb_access_logs.bucket
     enabled = var.enable_access_logs
   }
 }
