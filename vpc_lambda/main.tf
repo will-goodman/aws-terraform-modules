@@ -45,6 +45,7 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
 data "aws_iam_policy_document" "lambda_policy" {
   statement {
     actions = [
+      "logs:CreateLogGroup",
       "logs:CreateLogStream",
       "logs:PutLogEvents"
     ]
