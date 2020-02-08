@@ -11,15 +11,11 @@ resource "aws_vpc" "vpc" {
 resource "aws_subnet" "public_subnet" {
   cidr_block = var.public_cidr_range
   vpc_id = aws_vpc.vpc.id
-
-  availability_zone_id = var.subnet_availability_zone
 }
 
 resource "aws_subnet" "second_public_subnet" {
   cidr_block = var.second_public_cidr_range
   vpc_id = aws_vpc.vpc.id
-
-  availability_zone_id = var.subnet_availability_zone
 }
 
 resource "aws_route_table" "public_route_table" {
