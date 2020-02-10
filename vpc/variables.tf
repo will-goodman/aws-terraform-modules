@@ -7,6 +7,16 @@ variable "vpc_cidr" {
   description = "CIDR range of the VPC."
 }
 
+variable "availability_zones" {
+  description = "List of availability zones to deploy subnets to."
+  type = list(string)
+
+  validation {
+    condition     = length(var.availability_zones) > 1
+    error_message = "At least two availability zones must be selected."
+  }
+}
+
 variable "public_cidr_range" {
   description = "CIDR range of the public subnet."
 }
