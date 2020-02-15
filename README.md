@@ -15,6 +15,29 @@ module "bootstrap" {
 }
 ```
 
+## self_signed_cert
+Creates a TLS self-signed x509 certificate. 
+<br><b>ONLY USE IN DEV ENVIRONMENTS</b>
+<br>This module uses the tls_private_key resource which stores the unencrypted key in the state file. As such, this module should only be used in Dev environments.
+- Self-signed certificate in Amazon Certificate Manager
+
+```hcl-terraform
+module "self_signed_cert" {
+  source = "github.com/will-goodman/aws-terraform-modules//self_signed_cert"
+
+  key_algorithm = // Key algorithm to use to generate the private key.
+
+  common_name = // Domain to create the certificate for.
+
+  validity_hours = // How many hours the certificate should remain valid.
+
+  allowed_uses = // List of reasons the certificate can be used. See https://www.terraform.io/docs/providers/tls/r/self_signed_cert.html
+}
+```
+
+Outputs:
+- arn (of the certificate in ACM)
+
 ## vpc
 Creates resources required for VPC networking.
 - VPC
