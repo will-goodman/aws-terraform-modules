@@ -1,6 +1,6 @@
 
 resource "aws_s3_bucket" "bucket" {
-  bucket = var.bucket_name
+  bucket_prefix = var.bucket_prefix
 
   policy = var.bucket_policy
 

@@ -1,6 +1,6 @@
 
-variable "bucket_name" {
-  description = "Name for the S3 bucket. Must be globally unique"
+variable "bucket_prefix" {
+  description = "Prefix for the S3 Bucket name"
 }
 
 variable "bucket_policy" {

@@ -21,7 +21,7 @@ Creates an S3 bucket.
 module "s3" {
   source = "github.com/will-goodman/aws-terraform-modules//s3"
   
-  bucket_name = // Name for the S3 bucket. Must be globally unique
+  bucket_prefix = // Prefix for the S3 Bucket name
   bucket_policy = // Bucket policy to apply to the bucket
   
   force_destroy = // Whether or not to forceably destroy the bucket's contents on a terraform destroy. Default false
