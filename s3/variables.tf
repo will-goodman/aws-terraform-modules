@@ -3,10 +3,6 @@ variable "bucket_prefix" {
   description = "Prefix for the S3 Bucket name"
 }
 
-variable "bucket_policy" {
-  description = "Bucket policy to apply to the bucket"
-}
-
 variable "force_destroy" {
   description = "Whether or not to forceably destroy the bucket's contents on a terraform destroy. Default false"
   default = false

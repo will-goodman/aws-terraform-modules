@@ -22,7 +22,6 @@ module "s3" {
   source = "github.com/will-goodman/aws-terraform-modules//s3"
   
   bucket_prefix = // Prefix for the S3 Bucket name
-  bucket_policy = // Bucket policy to apply to the bucket
   
   force_destroy = // Whether or not to forceably destroy the bucket's contents on a terraform destroy. Default false
   versioning = // Whether or not to enable bucket versioning. Defaults to false

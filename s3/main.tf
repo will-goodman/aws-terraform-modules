@@ -2,8 +2,6 @@
 resource "aws_s3_bucket" "bucket" {
   bucket_prefix = var.bucket_prefix
 
-  policy = var.bucket_policy
-
   force_destroy = var.force_destroy
   versioning    = var.versioning
   region        = var.region
