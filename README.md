@@ -62,7 +62,6 @@ Creates resources required for VPC networking.
 - VPC
 - Two private subnets
 - Two public subnets
-- NAT Gateway
 - Internet Gateway
 
 ```hcl-terraform
@@ -84,6 +83,25 @@ Outputs:
 - vpc_id
 - public_subnets (Subnet IDs)
 - private_subnets (Subnet IDs)
+
+## vpc_with_nat
+Creates the same as "vpc" with the addition of a NAT Gateway.<br>
+NAT Gateways cost money, so unless you require it use "vpc" instead.
+
+```hcl-terraform
+module "vpc" {
+  source = "github.com/will-goodman/aws-terraform-modules//vpc_with_nat"
+  
+  vpc_name = //Name to assign to the VPC.
+  
+  vpc_cidr = //CIDR range of the VPC.
+  availability_zones = //List of availability zones to deploy subnets to. Must be at least two.
+  public_cidr_range = //CIDR range of the public subnet.
+  second_public_cidr_range = //CIDR range of the second public subnet.
+  private_cidr_range = //CIDR range of the private subnet.
+  second_private_cidr_range = //CIDR range of the second private subnet.
+}
+```
 
 ## vpc_lambda
 Creates a Lambda hosted within a VPC.
