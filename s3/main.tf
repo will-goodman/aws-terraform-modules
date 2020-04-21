@@ -3,8 +3,11 @@ resource "aws_s3_bucket" "bucket" {
   bucket_prefix = var.bucket_prefix
 
   force_destroy = var.force_destroy
-  versioning    = var.versioning
   region        = var.region
+
+  versioning {
+    enabled = var.versioning
+  }
 
   server_side_encryption_configuration {
     rule {
