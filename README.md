@@ -43,7 +43,6 @@ Creates resources required for VPC networking.
 - VPC
 - Two private subnets
 - Two public subnets
-- NAT Gateway
 - Internet Gateway
 
 ```hcl-terraform
@@ -65,6 +64,10 @@ Outputs:
 - vpc_id
 - public_subnets (Subnet IDs)
 - private_subnets (Subnet IDs)
+
+## vpc_with_nat
+Creates the same as "vpc" with the addition of a NAT Gateway.<br>
+NAT Gateways cost money, so unless you require it use "vpc" instead.
 
 ## vpc_lambda
 Creates a Lambda hosted within a VPC.
