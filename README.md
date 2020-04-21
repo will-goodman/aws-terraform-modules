@@ -14,6 +14,24 @@ module "bootstrap" {
   lock_table_name = //Name of the DynamoDB table which stores the state file lock.
 }
 ```
+## s3
+Creates an S3 bucket.
+
+```hcl-terraform
+module "s3" {
+  source = "github.com/will-goodman/aws-terraform-modules//s3"
+  
+  bucket_prefix = // Prefix for the S3 Bucket name
+  
+  force_destroy = // Whether or not to forceably destroy the bucket's contents on a terraform destroy. Default false
+  versioning = // Whether or not to enable bucket versioning. Defaults to false
+  region = // Region to create the bucket in
+}
+```
+
+Outputs:
+- id
+- arn
 
 ## self_signed_cert
 Creates a TLS self-signed x509 certificate. 
