@@ -1,4 +1,3 @@
-
 resource "aws_s3_bucket" "state_bucket" {
   bucket = var.state_bucket_name
 
