@@ -1,4 +1,3 @@
-
 variable "state_bucket_name" {
   description = "Globally unique name for the bucket which stores the Terraform state."
 }

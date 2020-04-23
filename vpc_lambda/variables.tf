@@ -1,4 +1,3 @@
-
 variable "function_name" {
   description = "Name of the lambda function."
 }
@@ -29,10 +28,10 @@ variable "filename" {
 
 variable "subnet_ids" {
   description = "Subnets to give the lambda access to."
-  type = list(string)
+  type        = list(string)
 }
 
 variable "security_groups" {
   description = "Security groups to place the lambda in."
-  type = list(string)
+  type        = list(string)
 }
